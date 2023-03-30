@@ -1,0 +1,30 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract SimpleMath {
+    function add(uint _a, uint _b) public pure returns (uint) {
+        // require statement
+        require(_a > 0 && _b > 0, "Inputs must be greater than zero");
+
+        uint result = _a + _b;
+
+        // assert statement
+        assert(result > _a && result > _b);
+
+        return result;
+    }
+
+    function divide(uint _a, uint _b) public pure returns (uint) {
+        // require statement
+        require(_b > 0, "Divisor must be greater than zero");
+
+        uint result = _a / _b;
+
+        // revert statement
+        if (result == 0) {
+            revert("Result cannot be zero");
+        }
+
+        return result;
+    }
+}
